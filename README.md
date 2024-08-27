@@ -18,6 +18,9 @@ presentation definitions can be managed with the [web wallet frontend](https://g
 Quick links:
 - Mobile wallet: 
   - [iOS & Android code](https://github.com/Sphereon-Opensource/mobile-wallet/tree/funke)
+  - Guides:
+    - [Onboarding flow guide](./pdf/Sphereon%20Wallet%20Onboarding%20Flow.pdf)
+    - [Using the wallet guide](./pdf/Using%20the%20Sphereon%20Wallet.pdf)
 - Relying Party Demo
   - [Demo portal](https://funke.demo.sphereon.com)
   - [Agent (backend) code](https://github.com/Sphereon-Opensource/web-wallet/tree/develop/packages/agent). See also the [general repo/readme](https://github.com/Sphereon-Opensource/web-wallet/)
