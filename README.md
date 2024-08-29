@@ -83,3 +83,4 @@ TODO:
 Many things, but we for sure want to have these in before demo day:
     - Presenting mdocs isn't working at present. Finishing up some Presentation Exchange changes to make it work. 
     - We need to finish the C\'\' flow for presenting with NFC
+    - Same device flows for VP (deeplinks) aren't working, only cross-device
