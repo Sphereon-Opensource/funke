@@ -52,7 +52,7 @@ the wallet do not have the required functionalities for the Funke!**
 
 Since we wanted to skip any Apple reviews which are likely to become problematic as they cannot use all features, because of the IP and NFC
 requirements, we decided to put
-people in the internal test track. That means that people will first have to accept the invite to joint the internal test track. Only then can we add
+people in the internal test track. That means that people will first have to accept the invite to join the internal test track. Only then can we add
 them to the wallet team for them
 to have access. We will keep track of that during the coming days, so people should be getting a notification once we have added them to the Funke
 team (after they accepted the invite). You should have gotten an invite for the version of yesterday just now. Unfortunately Apple does not allow to
@@ -63,3 +63,23 @@ invite people directly onto a test version of the app, so it will be a two step 
 People should have gotten an invite for internal testing. Contrary to iOS that should lead directly to being able to install/use the 0.4.0 version of
 the app. If that doesn't work then this is a direct link for internal testing: https://play.google.com/apps/internaltest/4701374210629215554
 
+## Changelog
+
+### 2024-8-29 Test Release 2
+
+- Get both mdocs and SD-JWTs from PID issuer at the same time. Previously only the SD-JWT credential was retrieved because we didn't update the nonce
+  from the response of the first credential
+- Presenting SD-JWTs to the RP wasn't working. This has been fixed. Mdoc presentation will follow in the next release (see TODO)
+- Allow to get the PIDs from the catalog. This functionality wasn't hooked up before. Now you can get new PIDs all the time. Old PIDs will be removed on successful retrieval
+- Only showing one PID in the list/card views no matter the format. Whenever you get the PID from the catalog it will overwrite any existing PIDs on success. This has always been the intention but in the first release you could end up with multiple visible PIDs.
+- You can now show credential details from the credential card view. Previously this was only possible from the list view
+
+- UX/UI polishing:
+  - The Button of the pincode screen during signing of the credential request was behind the keyboard
+  - The eID pincode screen was very hard to use and had not focus
+  - Several buttons were off. For instance when deleting the wallet or deleting a credential (only in list view at the moment) the buttons where almost of the screen
+
+TODO:
+Many things, but we for sure want to have these in before demo day:
+    - Presenting mdocs isn't working at present. Finishing up some Presentation Exchange changes to make it work. 
+    - We need to finish the C\'\' flow for presenting with NFC
