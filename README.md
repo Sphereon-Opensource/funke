@@ -68,7 +68,7 @@ the app. If that doesn't work then this is a direct link for internal testing: h
 ### 2024-8-29 Test Release 2
 
 - Get both mdocs and SD-JWTs from PID issuer at the same time. Previously only the SD-JWT credential was retrieved because we didn't update the nonce
-  from the response of the first credential
+  from the response of the first credential. So although technicially we could get Mdocs, we disabled them as we don't want to bother the user with knowledge about multiple formats.
 - Presenting SD-JWTs to the RP wasn't working. This has been fixed. Mdoc presentation will follow in the next release (see TODO)
 - Allow to get the PIDs from the catalog. This functionality wasn't hooked up before. Now you can get new PIDs all the time. Old PIDs will be removed on successful retrieval
 - Only showing one PID in the list/card views no matter the format. Whenever you get the PID from the catalog it will overwrite any existing PIDs on success. This has always been the intention but in the first release you could end up with multiple visible PIDs.
@@ -76,8 +76,8 @@ the app. If that doesn't work then this is a direct link for internal testing: h
 
 - UX/UI polishing:
   - The Button of the pincode screen during signing of the credential request was behind the keyboard
-  - The eID pincode screen was very hard to use and had not focus
-  - Several buttons were off. For instance when deleting the wallet or deleting a credential (only in list view at the moment) the buttons where almost of the screen
+  - The eID pincode screen was very hard to use and didn't have focus
+  - Several buttons were off. For instance when deleting the wallet or deleting a credential (only in list view at the moment) the buttons were almost of the screen
 
 TODO:
 Many things, but we for sure want to have these in before demo day:
