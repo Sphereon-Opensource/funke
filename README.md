@@ -7,6 +7,25 @@
 </h1>
 
 Welcome to an overview of the most important components and deliverables of the SPRIND Funke.
+
+**Phase 2**
+During phase 2, we have overhauled a part of the UX. See also the [Design and UX rationale](./pdf/Funke%20stage%202%20-%20Design%20rationale.pdf) that
+explains choices made. We have implemented activity histories, contact details and trust establishment warnings/notifications. We have enabled and
+integrated assistive technologies, including a multi-modal (text and speech) conversational User Interface that acts both as a chatbot that you can
+ask questions, as
+well as an assistant to execute actions on your behalf. The assistant can have both text and speech input, and provide text and speech output. You can
+change the language if you want as well. It currently is limited to the issuance process and the credential details screen. However on those screens
+it is fully context aware.
+
+We have the basics of an anomaly detection plugin. It handles fetching resource from the internet, and performs an on-device country/continent
+lookup. We will use this for a trust score in the near future.
+
+We have integrated OpenID Federation for trust establishment. We also us it to fetch the signed metadata for Issuers or RPs if present. Right now the
+wallet assumes it has a list of trusted Certificates and is part of 2 test federations. This means it will show a warning for any other party you will
+be interacting with.
+
+
+**Phase 1 (old)**
 During phase 1, work on our [mDL/mdoc](https://github.com/Sphereon-Opensource/mdoc-cbor-crypto-multiplatform/tree/develop) library has progressed.
 The [OID4VC libraries](https://github.com/Sphereon-Opensource/OID4VC) have been updated to the latest spec versions. Support for SD-JWTs and mDL/mdocs
 has been added to the SDK and more changes have been made as one can see below.
@@ -20,18 +39,29 @@ Quick links:
 
 - Mobile wallet:
     - [iOS & Android code](https://github.com/Sphereon-Opensource/mobile-wallet/tree/funke)
+    - [Design and UX rationale](./pdf/Funke%20stage%202%20-%20Design%20rationale.pdf)
     - Guides:
-        - [Onboarding flow guide](./pdf/Sphereon%20Wallet%20Onboarding%20Flow.pdf)
-        - [Using the wallet guide](./pdf/Using%20the%20Sphereon%20Wallet.pdf)
-- Relying Party Demo
-    - [Demo portal](https://funke.demo.sphereon.com)
+        - [Onboarding flow guide](./pdf/Guide%20-%20Sphereon%20Wallet%20Onboarding%20Flow%20with%20eID.pdf)
+        - [Using the wallet guide](./pdf/Guide%20-%20Using%20the%20Sphereon%20Wallet.pdf)
+- Issuer and RP Demo
+    - [Demo Issuer portal](https://funke.demo.sphereon.com)
+    - [Demo Relying Party portal](https://funke.demo.sphereon.com)
     - [Agent (backend) code](https://github.com/Sphereon-Opensource/web-wallet/tree/develop/packages/agent). See also
       the [general repo/readme](https://github.com/Sphereon-Opensource/web-wallet/)
     - [Frontend code](https://github.com/Sphereon-Opensource/OID4VC-demo)
+
+## Phase 2 links
+- [Experimental OID4VP SD-JWT support in ISO 18013-5 documentation](https://github.com/Sphereon-Opensource/mdoc-cbor-crypto-multiplatform/blob/develop/sphereon-kmp-mdoc-core/Experimental-OID4VP-18013-5.MD)
+- [Credential and issuer branding](https://github.com/Sphereon-Opensource/UI-Components/tree/develop/packages/credential-branding)
+- [SD-JWT VC type metadata](https://github.com/Sphereon-Opensource/SSI-SDK/blob/develop/packages/ssi-types/src/types/sd-jwt-type-metadata.ts)
+- [OpenID Federation multiplatform](https://github.com/Sphereon-Opensource/OpenID-Federation/tree/develop) and [client](https://github.com/Sphereon-Opensource/OpenID-Federation/tree/develop/modules/openid-federation-client/src/commonMain/kotlin/com/sphereon/oid/fed/client)
+
+## Phase 1 links
+
 - SDK
     - [General SDK code](https://github.com/Sphereon-Opensource/SSI-SDK)
     - [Cryptographic SDK extension code](https://github.com/Sphereon-Opensource/SSI-SDK-crypto-extensions)
-    - New modules:
+    - New modules (phase 1):
         - [Key Management System with SSCD abstraction](https://github.com/Sphereon-Opensource/SSI-SDK-crypto-extensions/tree/develop/packages/kms-musap-rn)
         - [Uniform internal and external identifier/key resolution](https://github.com/Sphereon-Opensource/SSI-SDK-crypto-extensions/tree/develop/packages/identifier-resolution)
         - [JWT/JWS signing service using unified identifiers](https://github.com/Sphereon-Opensource/SSI-SDK-crypto-extensions/tree/develop/packages/jwt-service)
@@ -54,9 +84,7 @@ Since we wanted to skip any Apple reviews which are likely to become problematic
 requirements, we decided to put
 people in the internal test track. That means that people will first have to accept the invite to join the internal test track. Only then can we add
 them to the wallet team for them
-to have access. We will keep track of that during the coming days, so people should be getting a notification once we have added them to the Funke
-team (after they accepted the invite). You should have gotten an invite for the version of yesterday just now. Unfortunately Apple does not allow to
-invite people directly onto a test version of the app, so it will be a two step process
+to have access. We also publicly release versions, but these are always a bit later then the internal test track versions.
 
 ## Android
 
@@ -67,7 +95,23 @@ Funke functionality. It needs to be a 0.4.x version
 
 ## Changelog
 
-### 2024-8-29 Test Release 2
+### Phase 2
+
+#### 2024-11-26
+
+Initial release for phase 2
+
+- Contact details added to contacts like terms of service, privacy policy, website, contacts (if present) for issuers and RPs
+- Support for (Q)EAAs including branding of credentials and issuer
+- OpenID Federation support for trust establishment, including metadata for RPs, AS, and Issuers
+- Conversational UI that is context aware, can perform actions and is multi-modal (text and speech). Focussed on the issuance process for now
+- Activity history
+- Profile, including display of PID and derived claims
+- New presentation screen
+
+### Phase 1
+
+#### 2024-8-29 Test Release 2
 
 - Get both mdocs and SD-JWTs from PID issuer at the same time. Previously only the SD-JWT credential was retrieved because we didn't update the nonce
   from the response of the first credential. So although technicially we could get Mdocs, we disabled them as we don't want to bother the user with
@@ -87,6 +131,7 @@ Funke functionality. It needs to be a 0.4.x version
 
 TODO:
 Many things, but we for sure want to have these in before demo day:
+
 - Presenting mdocs isn't working at present. Finishing up some Presentation Exchange changes to make it work.
 - We need to finish the C\'\' flow for presenting with NFC
 - Same device flows for VP (deeplinks) aren't working, only cross-device
