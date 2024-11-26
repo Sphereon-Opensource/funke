@@ -99,7 +99,7 @@ Funke functionality. It needs to be a 0.4.x version
 
 #### 2024-11-26
 
-Initial release for phase 2
+Initial release for phase 2 (0.4.13)
 
 - Contact details added to contacts like terms of service, privacy policy, website, contacts (if present) for issuers and RPs
 - Support for (Q)EAAs including branding of credentials and issuer
