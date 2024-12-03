@@ -24,7 +24,6 @@ We have integrated OpenID Federation for trust establishment. We also us it to f
 wallet assumes it has a list of trusted Certificates and is part of 2 test federations. This means it will show a warning for any other party you will
 be interacting with.
 
-
 **Phase 1 (old)**
 During phase 1, work on our [mDL/mdoc](https://github.com/Sphereon-Opensource/mdoc-cbor-crypto-multiplatform/tree/develop) library has progressed.
 The [OID4VC libraries](https://github.com/Sphereon-Opensource/OID4VC) have been updated to the latest spec versions. Support for SD-JWTs and mDL/mdocs
@@ -44,17 +43,19 @@ Quick links:
         - [Onboarding flow guide](./pdf/Guide%20-%20Sphereon%20Wallet%20Onboarding%20Flow%20with%20eID.pdf)
         - [Using the wallet guide](./pdf/Guide%20-%20Using%20the%20Sphereon%20Wallet.pdf)
 - Issuer and RP Demo
-    - [Demo Issuer portal](https://funke.demo.sphereon.com)
+    - [Demo Issuer portal](https://issuer.funke.demo.sphereon.com/issuer)
     - [Demo Relying Party portal](https://funke.demo.sphereon.com)
     - [Agent (backend) code](https://github.com/Sphereon-Opensource/web-wallet/tree/develop/packages/agent). See also
       the [general repo/readme](https://github.com/Sphereon-Opensource/web-wallet/)
     - [Frontend code](https://github.com/Sphereon-Opensource/OID4VC-demo)
 
 ## Phase 2 links
+
 - [Experimental OID4VP SD-JWT support in ISO 18013-5 documentation](https://github.com/Sphereon-Opensource/mdoc-cbor-crypto-multiplatform/blob/develop/sphereon-kmp-mdoc-core/Experimental-OID4VP-18013-5.MD)
 - [Credential and issuer branding](https://github.com/Sphereon-Opensource/UI-Components/tree/develop/packages/credential-branding)
 - [SD-JWT VC type metadata](https://github.com/Sphereon-Opensource/SSI-SDK/blob/develop/packages/ssi-types/src/types/sd-jwt-type-metadata.ts)
-- [OpenID Federation multiplatform](https://github.com/Sphereon-Opensource/OpenID-Federation/tree/develop) and [client](https://github.com/Sphereon-Opensource/OpenID-Federation/tree/develop/modules/openid-federation-client/src/commonMain/kotlin/com/sphereon/oid/fed/client)
+- [OpenID Federation multiplatform](https://github.com/Sphereon-Opensource/OpenID-Federation/tree/develop)
+  and [client](https://github.com/Sphereon-Opensource/OpenID-Federation/tree/develop/modules/openid-federation-client/src/commonMain/kotlin/com/sphereon/oid/fed/client)
 
 ## Phase 1 links
 
@@ -97,6 +98,20 @@ Funke functionality. It needs to be a 0.4.x version
 
 ### Phase 2
 
+#### 2024-12-03
+
+Second release for phase 2 (0.4.14)
+
+- Complete overhaul of Signature validation. Previously we relied on react-native-quick-crypto and crypto.subtle in React Native. Which is known to
+  not be fully
+  implemented. Changed to use @noble javascript libraries, which have received multiple security audits. New implementation can be
+  found [here](https://github.com/Sphereon-Opensource/SSI-SDK-crypto-extensions/blob/4ae483d7d5baf604f38dad8e5ace931612b85e2b/packages/key-utils/src/functions.ts#L755)
+- The above fixes issues when signing both for SD-JWTs and Mdl/Mdocs
+- New credential card list view. Demo video [here](./video/Record_2024-12-01-11-35-41.mp4)
+- Add rate limiting error screen to chatbot. Unfortunately OpenAI applies ratelimits, which cannot be increased during their beta phase. Inform the
+  user when it happens.
+
+
 #### 2024-11-26
 
 Initial release for phase 2 (0.4.13)
@@ -114,7 +129,7 @@ Initial release for phase 2 (0.4.13)
 #### 2024-8-29 Test Release 2
 
 - Get both mdocs and SD-JWTs from PID issuer at the same time. Previously only the SD-JWT credential was retrieved because we didn't update the nonce
-  from the response of the first credential. So although technicially we could get Mdocs, we disabled them as we don't want to bother the user with
+  from the response of the first credential. So although technically we could get Mdocs, we disabled them as we don't want to bother the user with
   knowledge about multiple formats.
 - Presenting SD-JWTs to the RP wasn't working. This has been fixed. Mdoc presentation will follow in the next release (see TODO)
 - Allow to get the PIDs from the catalog. This functionality wasn't hooked up before. Now you can get new PIDs all the time. Old PIDs will be removed
