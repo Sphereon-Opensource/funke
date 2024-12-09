@@ -42,6 +42,7 @@ Quick links:
     - Guides:
         - [Onboarding flow guide](./pdf/Guide%20-%20Sphereon%20Wallet%20Onboarding%20Flow%20with%20eID.pdf)
         - [Using the wallet guide](./pdf/Guide%20-%20Using%20the%20Sphereon%20Wallet.pdf)
+        - [euicc signing support guide](./pdf/DOC-Use%20eSim%20as%20security%20model%20in%20Sphereon%20Wallet.pdf)
 - Issuer and RP Demo
     - [Demo Issuer portal](https://issuer.funke.demo.sphereon.com/issuer)
     - [Demo Relying Party portal](https://funke.demo.sphereon.com)
