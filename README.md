@@ -98,6 +98,13 @@ Funke functionality. It needs to be a 0.4.x version
 
 ### Phase 2
 
+#### 2024-12-06
+
+Third release for phase 2 (0.4.15)
+
+- Enable HSM and eUICC/eSIM flows
+
+
 #### 2024-12-03
 
 Second release for phase 2 (0.4.14)
